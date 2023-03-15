@@ -2,4 +2,17 @@
 <button (click)="OnClick()">toggle Child view</button>
 <app-child *ngIf="showChilde" [value]="chag">
   <h1>This is from child NgContent</h1>
+
+  <p>Type a message down</p>
+  <input
+    type="text "
+    placeholder="Message
+  "
+    #message
+  />
+  <button (click)="SendMessage(message.value)">Send Message</button>
 </app-child>
+
+<li *ngFor="let item of ApiData">
+  {{ item.title }}
+</li>

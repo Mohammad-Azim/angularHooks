@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { MessageNotServiceService } from 'src/app/services/message-not-service.service';
 
 import { ChildComponent } from './child.component';
 
@@ -8,9 +10,9 @@ describe('ChildComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChildComponent ]
-    })
-    .compileComponents();
+      imports: [FormsModule],
+      declarations: [ChildComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ChildComponent);
     component = fixture.componentInstance;
@@ -19,5 +21,6 @@ describe('ChildComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.counter).toEqual(0);
   });
 });

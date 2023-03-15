@@ -8,6 +8,7 @@ import {
   OnChanges,
   OnDestroy,
 } from '@angular/core';
+import { MessageNotServiceService } from 'src/app/services/message-not-service.service';
 
 @Component({
   selector: 'app-child',
@@ -26,9 +27,14 @@ export class ChildComponent
   @Input() value!: boolean;
   counter: number = 0;
   interval: any;
+  myMessage?: string;
 
-  constructor() {
+  constructor(messageS: MessageNotServiceService) {
     console.log('Child constructor here');
+
+    messageS.subject.subscribe((val) => {
+      this.myMessage = val;
+    });
   }
 
   ngOnInit() {
